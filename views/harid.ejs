@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REJA</title>
+    <link rel="stylesheet"
+     href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+</head>
+<body style="background: lightblue;">
+    <div class="container">
+        <h1 class="display-4 text-center py-3">Welcome to To-Do List</h1>
+
+        <!-- Yangi reja qo'shish formasi -->
+        <div class="jumbotron p-3 shadow-sm">
+            <form id="create-form" action="/create-item" method="POST">
+                <div class="d-flex align-items-center">
+                    <input id="create-field" name="item" autofocus autocomplete="off" required
+                           class="form-control mr-3" type="text"
+                           style="flex: 1;" placeholder="Yangi reja yozing...">
+                    <button class="btn btn-primary">Qo'shish</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Rejalar ro'yxati -->
+        <ul id="item-list" class="list-group pb-5">
+            <!-- Reja bo'lmasa shu yozuv chiqadi -->
+            <% if (items.length === 0) { %>
+                <li id="empty-item" class="list-group-item text-muted">Hozircha reja yo'q</li>
+            <% } %>
+            <!-- Har bir reja: data-id orqali brauzer qaysi rejaligini biladi -->
+            <% items.forEach(function (item) { %>
+                <li data-id="<%= item.id %>" class="list-group-item list-group-item-info d-flex align-items-center justify-content-between">
+                    <span class="item-text"><%= item.reja %></span>
+                    <!-- Tahrirlash va o'chirish tugmalari -->
+                    <div>
+                        <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
+                        <button class="delete-me btn btn-danger btn-sm">Delete</button>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+    <!-- Qo'shish, Edit, Delete uchun brauzer kodi (public/browser.js) -->
+    <script src="/browser.js"></script>
+</body>
+</html>

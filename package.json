@@ -12,7 +12,9 @@
   "author": "Nora",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^6.0.0-alpha.2",
     "ejs": "^7.0.2",
+    "express": "^5.3.0",
     "nodemon": "^3.1.14"
   }
 }
